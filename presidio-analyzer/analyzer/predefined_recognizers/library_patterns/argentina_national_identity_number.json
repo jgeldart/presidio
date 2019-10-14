@@ -1,0 +1,21 @@
+{
+  "entity": "ARGENTINA_DNI",
+  "patterns": [
+      {
+        "name": "argentina-dni-recognizer",
+        "regex": "\\b\\d\\d\\.\\d\\d\\d\\.\\d\\d\\d\\b",
+        "score": 1
+      }
+  ],
+  "contextPhrases": [
+      "Argentina National Identity number",
+      "Identity",
+      "Identification National Identity Card",
+      "DNI",
+      "NIC National Registry of Persons",
+      "Documento Nacional de Identidad",
+      "Registro Nacional de las Personas",
+      "Identidad",
+      "Identificación"
+      ]
+}

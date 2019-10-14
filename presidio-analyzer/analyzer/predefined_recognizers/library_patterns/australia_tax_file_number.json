@@ -1,0 +1,20 @@
+{
+  "entity": "AU_TAX_FILE_NUMBER",
+  "patterns": [
+      {
+        "name": "australia-tax-file-number-recognizer",
+        "regex": "\\b\\d{3}\\s?\\d{3}\\s?\\d{2,3}\\b",
+        "score": 1
+      }
+  ],
+  "contextPhrases": [
+      "australian business number",
+      "marginal tax rate",
+      "medicare levy",
+      "portfolio number",
+      "service veterans",
+      "withholding tax",
+      "individual tax return",
+      "tax file number"
+      ]
+}

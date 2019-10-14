@@ -9,6 +9,7 @@ from analyzer.predefined_recognizers import CreditCardRecognizer, \
     UsItinRecognizer, UsPassportRecognizer, UsPhoneRecognizer, \
     UsSsnRecognizer
 
+from analyzer.predefined_recognizers.library_patterns import load_pattern_library
 
 class RecognizerRegistry:
     """
@@ -42,6 +43,7 @@ class RecognizerRegistry:
         self.store_api = recognizer_store_api
 
     def load_predefined_recognizers(self):
+        self.recognizers.extend(load_pattern_library())
         #   TODO: Change the code to dynamic loading -
         # Task #598:  Support loading of the pre-defined recognizers
         # from the given path.

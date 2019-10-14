@@ -1,0 +1,21 @@
+{
+  "entity": "AU_MEDICAL_ACCOUNT_NUMBER",
+  "patterns": [
+      {
+        "name": "australia-man-recognizer",
+        "regex": "\\b[2-6]\\d{9}\\d?\\b",
+        "score": 1
+      }
+  ],
+  "contextPhrases": [
+      "bank account details",
+      "medicare payments",
+      "mortgage account",
+      "bank payments",
+      "information branch",
+      "credit card loan",
+      "department of human services",
+      "local service",
+      "medicare"
+      ]
+}

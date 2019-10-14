@@ -1,0 +1,42 @@
+{
+  "entity": "AU_PASSPORT_NUMBER",
+  "patterns": [
+      {
+        "name": "australia-passport-number-recognizer",
+        "regex": "\\b[[:alpha:]]\\d{7}\\b",
+        "score": 1
+      }
+  ],
+  "contextPhrases": [
+      "Passport Number",
+      "Passport No",
+      "Passport #",
+      "Passport#",
+      "PassportID",
+      "Passportno",
+      "passportnumber",
+      "パスポート",
+      "パスポート番号",
+      "パスポートのNum",
+      "パスポート ＃",
+      "Numéro de passeport",
+      "Passeport n °",
+      "Passeport Non",
+      "Passeport #",
+      "Passeport#",
+      "PasseportNon",
+      "Passeportn °",
+      "passport",
+      "passport details",
+      "immigration and citizenship",
+      "commonwealth of australia",
+      "department of immigration",
+      "residential address",
+      "department of immigration and citizenship",
+      "visa",
+      "national identity card",
+      "passport number",
+      "travel document",
+      "issuing authority"
+      ]
+}

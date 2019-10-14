@@ -1,0 +1,33 @@
+{
+  "entity": "BE_NATIONAL_NUMBER",
+  "patterns": [
+      {
+        "name": "belgium-national-number-recognizer",
+        "regex": "\b\\d{2}\\.(01|02|03|04|05|06|07|08|09|10|11|12)\\.([0-2]\\d|3[01])-\\d{3}\\.\\d{2}\\b",
+        "score": 1
+      }
+  ],
+  "contextPhrases": [
+      "Identity",
+      "Registration",
+      "Identification",
+      "ID",
+      "Identiteitskaart",
+      "Registratie nummer",
+      "Identificatie nummer",
+      "Identiteit",
+      "Registratie",
+      "Identificatie",
+      "Carte d’identité",
+      "numéro d'immatriculation",
+      "numéro d'identification",
+      "identité",
+      "inscription",
+      "Identifikation",
+      "Identifizierung",
+      "Identifikationsnummer",
+      "Personalausweis",
+      "Registrierung",
+      "Registrationsnummer"
+      ]
+}

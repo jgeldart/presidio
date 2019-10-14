@@ -1,0 +1,25 @@
+{
+  "entity": "AU_BANK_NUMBER",
+  "patterns": [
+      {
+        "name": "australia-ban-recognizer",
+        "regex": "\\b\\d{3}-?\\d{3}\\b",
+        "score": 1
+      }
+  ],
+  "contextPhrases": [
+      "swift bank code",
+      "correspondent bank",
+      "base currency",
+      "usa account",
+      "holder address",
+      "bank address",
+      "information account",
+      "fund transfers",
+      "bank charges",
+      "bank details",
+      "banking information",
+      "full names",
+      "iaea"
+      ]
+}

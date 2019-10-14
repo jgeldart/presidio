@@ -1,0 +1,29 @@
+{
+  "entity": "ABA_RTN",
+  "patterns": [
+      {
+        "name": "aba-recognizer",
+        "regex": "\\b[0123678][0-9]{3}[-]?[0-9]{4}[-]?[0-9]\\b",
+        "score": 1
+      }
+  ],
+  "contextPhrases": [
+      "aba",
+      "aba #",
+      "aba routing #",
+      "aba routing number",
+      "aba#",
+      "abarouting#",
+      "aba number",
+      "abaroutingnumber",
+      "american bank association routing #",
+      "american bank association routing number",
+      "americanbankassociationrouting#",
+      "americanbankassociationroutingnumber",
+      "bank routing number",
+      "bankrouting#",
+      "bankroutingnumber",
+      "routing transit number",
+      "RTN"
+      ]
+}
