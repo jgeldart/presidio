@@ -2,8 +2,10 @@
   "entity": "AU_TAX_FILE_NUMBER",
   "patterns": [
       {
-        "name": "australia-tax-file-number-recognizer",
-        "regex": "\\b\\d{3}\\s?\\d{3}\\s?\\d{2,3}\\b",
+        "name": "australia-tax-file-number-(extend)-recognizer",
+        "regex": "\\b\\d{3}\\s?\\d{3}\\s?\\d{3}\\b",
+        "sanitizer": " ",
+        "checksum": "(d0 + 4*d1 + 3*d2 + 7*d3 + 5*d4 + 8*d5 + 6*d6 + 9*d7 + 10*d8) % 11 % 2 == 0",
         "score": 1
       }
   ],
