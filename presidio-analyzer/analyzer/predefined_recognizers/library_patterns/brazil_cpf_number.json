@@ -1,0 +1,23 @@
+{
+  "entity" : "BR_CPF_NUMBER",
+  "patterns": [
+    {
+      "name": "brazil-cpf-number-recognizer",
+      "regex": "\\b\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}\\b",
+      "sanitizer": "-.",
+      "checksum": "10*(11 - (10*d0 + 9*d1 + 8*d2 + 7*d3 + 6*d4 + 5*d5 + 4*d6 + 3*d7 + 2*d8) % 11) + (11 - (11*d0 + 10*d1 + 9*d2 + 8*d3 + 7*d4 + 6*d5 + 5*d6 + 4*d7 + 3*d8 + 2*d9) % 11) == 10*d9 + d10",
+      "score": 0.85
+    }
+  ],
+  "contextPhrases": [
+      "CPF",
+      "Identification",
+      "Registration",
+      "Revenue",
+      "Cadastro de Pessoas Físicas",
+      "Imposto",
+      "Identificação",
+      "Inscrição",
+      "Receita"
+  ]
+}
