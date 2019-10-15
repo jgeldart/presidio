@@ -13,7 +13,7 @@ grpcio = "*"
 protobuf = "*"
 tldextract = "*"
 knack = "*"
-py_expression_eval = "*"
+formulas = "*"
 
 [dev-packages]
 pytest = "*"

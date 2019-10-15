@@ -4,9 +4,10 @@ from analyzer import PatternRecognizer
 from collections import defaultdict
 import re
 
-from py_expression_eval import Parser
+import formulas
 
-PARSER = Parser()
+PARSER = formulas.Parser()
+FUNCTIONS = formulas.get_functions()
 
 class LibraryPatternRecognizer(PatternRecognizer):
     """
@@ -36,15 +37,17 @@ class LibraryPatternRecognizer(PatternRecognizer):
             possible_checksum = self._safe_get(pattern, "checksum")
             possible_sanitizer = self._safe_get(pattern, "sanitizer")
             if possible_checksum is not None:
-                lhs, rhs = possible_checksum.split("==")
-                check = {
-                    "lhs": PARSER.parse(lhs),
-                    "rhs": PARSER.parse(rhs)
-                }
-                if possible_sanitizer is not None:
-                    check["sanitization_regex"] = re.compile("[{0}]".format(re.escape(possible_sanitizer)))
+                try:
+                    check = {
+                        "formula": PARSER.ast("={0}".format(possible_checksum))[1].compile()
+                    }
+                    if possible_sanitizer is not None:
+                        check["sanitization_regex"] = re.compile("[{0}]".format(re.escape(possible_sanitizer)))
 
-                checksums.append(check)
+                    checksums.append(check)
+                except Exception as e:
+                    pass
+
         self._checksums = checksums
 
         context_phrases = self._safe_get(library_pattern, "contextPhrases")
@@ -71,14 +74,25 @@ class LibraryPatternRecognizer(PatternRecognizer):
             validated = False
             for check in self._checksums:
                 if "sanitization_regex" in check.keys():
-                    santized_pattern = check["sanitization_regex"].sub("", pattern_text)
+                    sanitized_pattern = check["sanitization_regex"].sub("", pattern_text)
                 else:
-                    santized_pattern = pattern_text
+                    sanitized_pattern = pattern_text
 
-                variable_dict = { 'd{0}'.format(i):int(c) for i, c in enumerate(santized_pattern) if c.isdigit() }
-                lhs = check["lhs"].evaluate(variable_dict)
-                rhs = check["rhs"].evaluate(variable_dict)
-                validated = validated or (lhs == rhs)
+                digit_sequence = [int(c) for c in sanitized_pattern]
+
+                formula = check["formula"]
+
+                prepared_inputs = [ self._prepare_input(input, digit_sequence) for input in formula.inputs ]
+                result = formula(*prepared_inputs).item()
+
+                validated = validated or result
             return validated
         else:
             return None
+
+    def _prepare_input(self, input, digits):
+        if ":" in input:
+            start, end = input.split(":")
+            return digits[(int(start[1:])-1):(int(end[1:]))]
+        else:
+            return digits[(int(input[1:])-1)]
